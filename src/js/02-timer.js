@@ -51,9 +51,10 @@ function convertMs(ms) {
 const addLeadingZero = value => String(value).padStart(2, 0);
 
 function startTimer() {
+  refs.input.disabled = true;
   refs.startBtn.disabled = true;
   const targetDate = new Date(refs.input.value);
-  intervalId = setInterval(() => renderTimer(targetDate), 1000);
+  const intervalId = setInterval(() => renderTimer(targetDate), 1000);
 }
 
 function renderTimer(targetDate) {
@@ -68,7 +69,5 @@ function renderTimer(targetDate) {
     clearInterval(intervalId);
   }
 }
-
-refs.startBtn.disabled = true;
 
 refs.startBtn.addEventListener('click', startTimer);
